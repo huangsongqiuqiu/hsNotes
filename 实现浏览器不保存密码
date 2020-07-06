@@ -1,0 +1,25 @@
+由于安全等级保护要求，必须得让浏览器的自动保存密码功能作废，由于浏览器是识别<Input>的type='password'来判断是不是密码框，最开始提出了以下几个解决方案：
+1、将type置为text，利用onfocus事件将其再置为password，但是这样在提交表单或者切换到注册，忘记密码等界面时，还是会采集到password内的信息。
+2、（脑洞）将type置为text，将密码的字体改成'*'，这样可以正常提交数据，但是展示成*，问题是没找到这样的字体。。。。
+3、正式解决方案：引入一个新的input,复制原本密码框的所有属性，原本的密码框display:none掉，在账号密码的表单外层展示这层复制的密码并且展示为****，提交的时候还是提交的原来表单的密码，如下：
+          <form> //账号密码的表单 
+            ...
+            <input
+                hide
+                type="password"
+                placeholder="密码"
+                value={password}
+                onChange={inputOnChange.bind(this, 'password')}
+                required
+              />
+          </form>
+          <input
+            type="password"
+            placeholder="密码"
+            value={getPass(password)}
+            onChange={inputOnChange.bind(this, 'password')}
+            required
+          />
+ 经测试，方案3可行
+
+     
