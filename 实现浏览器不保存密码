@@ -20,6 +20,14 @@
             onChange={inputOnChange.bind(this, 'password')}
             required
           />
+          其中的getPass是封装原密码为*，
+          export const getPass = password => {
+            let newPass = ''
+            for (let i = 0; i < password.length; i += 1) {
+              newPass += '*'
+            }
+            return newPass
+          }
  经测试，方案3可行
 
      
