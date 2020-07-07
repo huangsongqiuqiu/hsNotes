@@ -28,6 +28,8 @@
             }
             return newPass
           }
- 经测试，方案3可行
-
+ 经测试，方案3可行（个屁）
      
+fix: 在写完这篇的当天，测试bug就报过来了- -，这种实现方式会将password也重置为*号。
+最终解决方案采用了上面的（脑洞）项，找到了一个字体，https://github.com/kylewelsby/dotsfont，
+最终将password框type改成text,字体改成dotsfont，测试了一下这个方案可行，就是dotsfonts的小圆点偏大，最小font-size只能取到12px,也总算是交差了
